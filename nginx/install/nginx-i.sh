@@ -14,12 +14,14 @@
 #https://media-glass.es/2015/02/14/nginx-ngx_pagespeed-centos-7/
 #https://www.digitalocean.com/community/tutorials/how-to-add-ngx_pagespeed-to-nginx-on-centos-7 
 
+BASEDIR=$(dirname "$0")
+
 sudo yum install centos-release-scl
 
 sudo yum install devtoolset-3-gcc-c++ devtoolset-3-binutils
 sudo yum install wget curl unzip gcc-c++ pcre-devel zlib-devel openssl openssl-devel GeoIP GeoIP-devel
 
-find ../extensions/ -name "*.sh" -exec sh {} \;
+find ${BASEDIR%/*}/extensions/ -name "*.sh" -exec sh {} \;
 
 cd $HOME
 
@@ -71,4 +73,4 @@ cd nginx-${NGINX_VERSION}/
 make
 make install
 
-find ../config/ -name "*.sh" -exec sh {} \;
+find ${BASEDIR%/*}/config/ -name "*.sh" -exec sh {} \;

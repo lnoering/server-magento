@@ -9,6 +9,8 @@
 #bash_version   :4.2.46(1)-release
 #==============================================================================
 
+BASEDIR=$(dirname "$0")
+
 yum install epel-release
 rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
 rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm
@@ -16,4 +18,5 @@ rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm
 
 yum install php70w
 
-find ../extensions/ -name "*.sh" -exec sh {} \;
+
+find ${BASEDIR%/*}/extensions/ -name "*.sh" -exec sh {} \;

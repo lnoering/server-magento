@@ -9,6 +9,8 @@
 #bash_version   :4.2.46(1)-release
 #==============================================================================
 
-find ../config/ -name "*.sh" -exec sh {} \;
+BASEDIR=$(dirname "$0")
 
-find ./ -name "*.sh" -not -name "$(basename $0)" -exec sh {} \;
+find ${BASEDIR%/*}/config -name "*.sh" -exec sh {} \;
+
+find $BASEDIR -name "*.sh" -not -name "$(basename $0)" -exec sh {} \;
