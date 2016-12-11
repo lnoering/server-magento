@@ -8,8 +8,9 @@
 #notes          : 
 #bash_version   :4.2.46(1)-release
 #==============================================================================
-
+BASEDIR=$(dirname "$0")
 NPS_VERSION=1.10.33.4
+
 wget https://github.com/pagespeed/ngx_pagespeed/archive/release-${NPS_VERSION}-beta.zip -O .${BASEDIR%/*/*}/download/ngx_pagespeed-release-${NPS_VERSION}-beta.zip
 unzip -d .${BASEDIR%/*/*}/download/ .${BASEDIR%/*/*}/download/ngx_pagespeed-release-${NPS_VERSION}-beta.zip
 
