@@ -14,7 +14,10 @@
 #https://media-glass.es/2015/02/14/nginx-ngx_pagespeed-centos-7/
 #https://www.digitalocean.com/community/tutorials/how-to-add-ngx_pagespeed-to-nginx-on-centos-7 
 
+REALPATH=${PWD%//}
 BASEDIR=$(dirname "$0")
+NPS_VERSION=1.10.33.4
+NGINX_VERSION=1.8.0
 
 sudo yum install centos-release-scl
 
@@ -23,15 +26,14 @@ sudo yum install wget curl unzip gcc-c++ pcre-devel zlib-devel openssl openssl-d
 
 find ${BASEDIR%/*}/extensions/ -name "*.sh" -exec sh {} \;
 
-##PS_NGX_EXTRA_FLAGS="--with-cc=/opt/rh/devtoolset-3/root/usr/bin/gcc"
+wget http://nginx.org/download/nginx-${NGINX_VERSION}.tar.gz -P ${BASEDIR%/*/*}/download/
+tar -xvzf ${BASEDIR%/*/*}/download/nginx-${NGINX_VERSION}.tar.gz -C ${BASEDIR%/*/*}/download/
 
-NGINX_VERSION=1.8.0
-wget http://nginx.org/download/nginx-${NGINX_VERSION}.tar.gz -P ${BASEDIR%/*/*}/download
-tar -xvzf ${BASEDIR%/*/*}/download/nginx-${NGINX_VERSION}.tar.gz
+cd ${REALPATH}/download/nginx-${NGINX_VERSION}
 
-${BASEDIR%/*/*}/download/nginx-${NGINX_VERSION}/configure \
---add-module=$HOME/ngx_pagespeed-release-${NPS_VERSION}-beta \
---add-module=$HOME/echo-nginx-module-0.46 \
+./configure \
+--add-module=${REALPATH}/download/ngx_pagespeed-release-${NPS_VERSION}-beta \
+--add-module=${REALPATH}/download/echo-nginx-module-0.46 \
 --prefix=/etc/nginx \
 --sbin-path=/usr/sbin/nginx \
 --conf-path=/etc/nginx/nginx.conf \
@@ -66,8 +68,10 @@ ${BASEDIR%/*/*}/download/nginx-${NGINX_VERSION}/configure \
 --with-http_geoip_module \
 --with-cc=/opt/rh/devtoolset-3/root/usr/bin/gcc
 
+#cd ${BASEDIR%/*/*}/download/nginx-${NGINX_VERSION}
+make --directory=${REALPATH}/download/nginx-${NGINX_VERSION}
+make --directory=${REALPATH}/download/nginx-${NGINX_VERSION} install
 
-make --directory=${BASEDIR%/*/*}/download/nginx-${NGINX_VERSION}
-make --directory=${BASEDIR%/*/*}/download/nginx-${NGINX_VERSION} install
+cd ${REALPATH}
 
 find ${BASEDIR%/*}/config/ -name "*.sh" -exec sh {} \;

@@ -9,8 +9,8 @@
 #bash_version   :4.2.46(1)-release
 #==============================================================================
 
-sh ./security/security-i.sh
-sh ./nginx/nginx-i.sh
-sh ./php/php-i.sh
+sh ./security/install/security-i.sh
+sh ./nginx/install/nginx-i.sh
+sh ./php/install/php-i.sh
 #configs do php
-sh ./database/percona-i.sh
+sh ./database/install/percona-i.sh

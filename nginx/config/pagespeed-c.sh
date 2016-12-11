@@ -9,6 +9,8 @@
 #bash_version   :4.2.46(1)-release
 #==============================================================================
 
+BASEDIR=$(dirname "$0")
+
 sudo mkdir -p /var/cache/ngx_pagespeed_cache
 
 sudo chown -R nobody:nobody /var/cache/ngx_pagespeed_cache

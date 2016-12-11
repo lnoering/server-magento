@@ -10,4 +10,4 @@
 #==============================================================================
 
 wget http://github.com/agentzh/echo-nginx-module/archive/v0.46.tar.gz -P ${BASEDIR%/*/*}/download
-tar xvzf ${BASEDIR%/*/*}/download/v0.46.tar.gz
+tar xvzf ${BASEDIR%/*/*}/download/v0.46.tar.gz -C .${BASEDIR%/*/*}/download/

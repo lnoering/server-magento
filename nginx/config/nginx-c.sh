@@ -9,6 +9,8 @@
 #bash_version   :4.2.46(1)-release
 #==============================================================================
 
+BASEDIR=$(dirname "$0")
+
 mv ${BASEDIR}/nginx /etc/init.d/
 chmod +x /etc/init.d/nginx
 
