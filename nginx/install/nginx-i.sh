@@ -23,16 +23,13 @@ sudo yum install wget curl unzip gcc-c++ pcre-devel zlib-devel openssl openssl-d
 
 find ${BASEDIR%/*}/extensions/ -name "*.sh" -exec sh {} \;
 
-cd $HOME
-
 ##PS_NGX_EXTRA_FLAGS="--with-cc=/opt/rh/devtoolset-3/root/usr/bin/gcc"
 
 NGINX_VERSION=1.8.0
-wget http://nginx.org/download/nginx-${NGINX_VERSION}.tar.gz
-tar -xvzf nginx-${NGINX_VERSION}.tar.gz
-cd nginx-${NGINX_VERSION}/
+wget http://nginx.org/download/nginx-${NGINX_VERSION}.tar.gz -P ${BASEDIR%/*/*}/download
+tar -xvzf ${BASEDIR%/*/*}/download/nginx-${NGINX_VERSION}.tar.gz
 
-./configure \
+${BASEDIR%/*/*}/download/nginx-${NGINX_VERSION}/configure \
 --add-module=$HOME/ngx_pagespeed-release-${NPS_VERSION}-beta \
 --add-module=$HOME/echo-nginx-module-0.46 \
 --prefix=/etc/nginx \
@@ -70,7 +67,7 @@ cd nginx-${NGINX_VERSION}/
 --with-cc=/opt/rh/devtoolset-3/root/usr/bin/gcc
 
 
-make
-make install
+make --directory=${BASEDIR%/*/*}/download/nginx-${NGINX_VERSION}
+make --directory=${BASEDIR%/*/*}/download/nginx-${NGINX_VERSION} install
 
 find ${BASEDIR%/*}/config/ -name "*.sh" -exec sh {} \;

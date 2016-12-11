@@ -12,6 +12,6 @@
 read -p "Informe a URL da loja : " URL_LOJA
 
 #todo - validar se existe o arquivo.
-sudo sed -i -e 's/magento.local.com/'"$URL_LOJA/g"'' ./magento.conf
+sudo sed -i -e 's/magento.local.com/'"$URL_LOJA/g"'' ${BASEDIR}/magento.conf
 
-mv ./magento.conf /etc/nginx/conf.d/"$URL_LOJA".conf
+mv ${BASEDIR}/magento.conf /etc/nginx/conf.d/"$URL_LOJA".conf

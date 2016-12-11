@@ -13,6 +13,4 @@ sudo mkdir -p /var/cache/ngx_pagespeed_cache
 
 sudo chown -R nobody:nobody /var/cache/ngx_pagespeed_cache
 
-#Arquivo pagespeed.conf já deverá estar no servidor.
-
-mv ./pagespeed.conf /etc/nginx/default.d/
+mv ${BASEDIR}/pagespeed.conf /etc/nginx/default.d/

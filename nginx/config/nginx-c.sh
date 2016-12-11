@@ -9,11 +9,7 @@
 #bash_version   :4.2.46(1)-release
 #==============================================================================
 
-cd $HOME
-
-#Arquivo nginx já deverá estar no servidor.
-
-mv ./nginx /etc/init.d/
+mv ${BASEDIR}/nginx /etc/init.d/
 chmod +x /etc/init.d/nginx
 
 chkconfig --add nginx
@@ -32,16 +28,13 @@ PROC=$(sudo grep "model name" /proc/cpuinfo | wc -l)
 #PROC=cat /proc/cpuinfo | grep 'cpu cores' | grep -o '[0-9]*'
 #PROC=sudo cat /proc/cpuinfo | grep 'cpu cores' | grep -o '[0-9]*'
 
-#Arquivo nginx.conf deve estar no servidor já
-
-#sudo sed -i -e 's/worker_processes  4;/worker_processes  "$PROC";/g' ./nginx.conf
 sudo sed -i -e 's/worker_processes  4;/worker_processes  '"$PROC"';/g' ./nginx.conf
 
 mkdir /etc/nginx/conf.d
 mkdir /etc/nginx/default.d
 
 sudo mv /etc/nginx/nginx.conf /etc/nginx/nginx.conf.orig
-sudo mv ./nginx.conf /etc/nginx/nginx.conf
+sudo mv ${BASEDIR}/nginx.conf /etc/nginx/nginx.conf
 
 sudo systemctl enable nginx
 
