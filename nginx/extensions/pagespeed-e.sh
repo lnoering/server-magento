@@ -16,4 +16,4 @@ unzip -d ${BASEDIR%/*/*}/download/ ${BASEDIR%/*/*}/download/ngx_pagespeed-releas
 
 #wget https://dl.google.com/dl/page-speed/psol/${NPS_VERSION}.tar.gz -O psol-${NPS_VERSION}.tar.gz -P .${BASEDIR%/*/*}/download/
 wget https://dl.google.com/dl/page-speed/psol/${NPS_VERSION}.tar.gz -O ${BASEDIR%/*/*}/download/psol-${NPS_VERSION}.tar.gz
-tar xzvf ${BASEDIR%/*/*}/download/psol-${NPS_VERSION}.tar.gz -C ${BASEDIR%/*/*}/download/ngx_pagespeed-release-${NPS_VERSION}-beta/ # extracts to psol/
+tar -xzvf ${BASEDIR%/*/*}/download/psol-${NPS_VERSION}.tar.gz -C ${BASEDIR%/*/*}/download/ngx_pagespeed-release-${NPS_VERSION}-beta/ # extracts to psol/
