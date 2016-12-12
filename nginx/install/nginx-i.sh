@@ -24,7 +24,7 @@ sudo yum install centos-release-scl
 sudo yum install devtoolset-3-gcc-c++ devtoolset-3-binutils
 sudo yum install wget curl unzip gcc-c++ pcre-devel zlib-devel openssl openssl-devel GeoIP GeoIP-devel
 
-find ${BASEDIR%/*}/extensions/ -name "*.sh" -exec sh {} \;
+find ${BASEDIR%/*}/extensions/* -name "*.sh" -exec sh {} \;
 
 wget http://nginx.org/download/nginx-${NGINX_VERSION}.tar.gz -P ${BASEDIR%/*/*}/download/
 tar -xvzf ${BASEDIR%/*/*}/download/nginx-${NGINX_VERSION}.tar.gz -C ${BASEDIR%/*/*}/download/
