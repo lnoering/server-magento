@@ -13,11 +13,19 @@
 
 BASEDIR=$(dirname "$0")
 
-yum install http://www.percona.com/downloads/percona-release/percona-release-0.0-1.x86_64.rpm
+yum install http://www.percona.com/downloads/percona-release/redhat/0.1-3/percona-release-0.1-3.noarch.rpm
 
-yum install Percona-Server-client-56 Percona-Server-server-56
+#yum install Percona-Server-client-57
+yum install Percona-Server-server-57
 
-mkdir /etc/my.cnf.d
+#mkdir /etc/my.cnf.d 
+
+chkconfig --add mysql
+chkconfig --level 345 mysql on
+#sudo chkconfig nginx on
+
+systemctl daemon-reload
+
 
 service mysql start
 
