@@ -30,7 +30,7 @@ PROC=$(sudo grep "model name" /proc/cpuinfo | wc -l)
 #PROC=cat /proc/cpuinfo | grep 'cpu cores' | grep -o '[0-9]*'
 #PROC=sudo cat /proc/cpuinfo | grep 'cpu cores' | grep -o '[0-9]*'
 
-sudo sed -i -e 's/worker_processes  4;/worker_processes  '"$PROC"';/g' ./nginx.conf
+sudo sed -i -e 's/worker_processes  4;/worker_processes  '"$PROC"';/g' ${BASEDIR}/nginx.conf
 
 mkdir /etc/nginx/conf.d
 mkdir /etc/nginx/default.d
