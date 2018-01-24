@@ -14,3 +14,4 @@ sh ./nginx/install/nginx-i.sh
 sh ./php/install/php-i.sh
 #configs do php
 sh ./database/install/percona-i.sh
+sh ./docker/install/docker-i.sh
