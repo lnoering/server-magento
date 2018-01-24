@@ -9,6 +9,8 @@
 #bash_version   :4.2.46(1)-release
 #==============================================================================
 
+BASEDIR=$(dirname "$0")
+
 sudo yum install -y yum-utils \
   device-mapper-persistent-data \
   lvm2
