@@ -22,5 +22,7 @@ gpasswd -a leonardo wheel
 
 #tirar a permissão de loguin com o usuário root
 sudo sed -i -e 's/#PermitRootLogin yes/PermitRootLogin no/g' /etc/ssh/sshd_config
+#permitir login por senha
+sudo sed -i -e 's/PasswordAuthentication no/PasswordAuthentication yes/g' /etc/ssh/sshd_config
 
 systemctl reload sshd
