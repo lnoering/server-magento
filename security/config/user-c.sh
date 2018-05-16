@@ -20,6 +20,9 @@ passwd leonardo
 #adicionar usuário ao grupo wheel para ter permissão de usar o SUDO
 gpasswd -a leonardo wheel
 
+#habilitar grupo wheel
+sudo sed -i -e 's/# %wheel  ALL=(ALL)       ALL/%wheel  ALL=(ALL)       ALL/g' /etc/sudoers
+
 #tirar a permissão de loguin com o usuário root
 sudo sed -i -e 's/#PermitRootLogin yes/PermitRootLogin no/g' /etc/ssh/sshd_config
 #permitir login por senha
